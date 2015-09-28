@@ -16,3 +16,4 @@ class DotavideoItem(Item):
     img = Field()
     time = Field()
     contentUrl = Field()
+    author = Field()
