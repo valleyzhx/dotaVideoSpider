@@ -9,7 +9,7 @@ from urlparse import urlparse
 
 class ExampleSpider(CrawlSpider):
         name = "mydota"
-        allowed_domains = ["dota.178.com","dota2.178.com"]
+        allowed_domains = ["dota.178.com"]
         start_urls = ['http://dota.178.com/video/']
         rules=(
             Rule(LinkExtractor(allow=r"/201509/*"),
@@ -30,6 +30,7 @@ class ExampleSpider(CrawlSpider):
             self.get_contentUrl(response,item)
             self.get_img(response,item)
             self.get_time(response,item)
+            self.get_author(response,item)
             if item['contentUrl']:
                 return item 
             
@@ -42,7 +43,8 @@ class ExampleSpider(CrawlSpider):
                 title = response.xpath("//meta[@name='Keywords']/@content").extract()
                 if title:
                     item['title']=title[0]
-        def get_author():
+
+        def get_author(self,response,item):
             author = response.xpath("//meta[@name='Author']/@content").extract()
             if author:
                 item['author']=author[0]
@@ -52,6 +54,7 @@ class ExampleSpider(CrawlSpider):
             if source:
                 # print 'source'+source[0][:-5].encode('utf-8')
                 item['contentUrl']=source[0]
+
         def get_img(self,response,item):
             imgage=response.xpath("//div[@class='x-video-poster']/img/@src").extract()
             if imgage:

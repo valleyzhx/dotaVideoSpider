@@ -64,7 +64,12 @@ NEWSPIDER_MODULE = 'dotaVideo.spiders'
 ITEM_PIPELINES = {
     'dotaVideo.pipelines.DotavideoPipeline': 300,
 }
-
+# start MySQL database configure setting
+# MYSQL_HOST = 'localhost'
+# MYSQL_DBNAME = 'cnblogsdb'
+# MYSQL_USER = 'root'
+# MYSQL_PASSWD = 'root'
+# end of MySQL database configure setting
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
